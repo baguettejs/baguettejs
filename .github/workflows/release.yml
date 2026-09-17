@@ -1,0 +1,39 @@
+name: Release packages
+
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: write
+  id-token: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: https://registry.npmjs.org
+      - run: bun install --frozen-lockfile
+      - run: bun run check
+      - name: Verify release tag
+        env:
+          RELEASE_TAG: ${{ github.ref_name }}
+        run: |
+          for package in packages/*; do
+            VERSION=$(bun -e "console.log((await Bun.file(process.argv[1]).json()).version)" "$package/package.json")
+            test "v${VERSION}" = "${RELEASE_TAG}"
+          done
+      - name: Publish changed packages
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_CONFIG_PROVENANCE: true
+        run: bun x changeset publish

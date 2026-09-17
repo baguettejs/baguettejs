@@ -1,0 +1,35 @@
+# BaguetteJS
+
+Monorepo Bun/TypeScript de BaguetteJS :
+
+- `packages/utils` — utilitaires et scanner de contrôleurs ;
+- `packages/core` — runtime HTTP, DI, routing, validation et OpenAPI ;
+- `packages/middlewares` — middlewares prêts à l'emploi ;
+- `packages/sdk` — génération de SDK ;
+- `examples/api` — exemple d'API CRUD complète.
+
+## Développement
+
+```bash
+bun install
+bun run check
+bun run build
+bun run --cwd examples/api dev
+```
+
+Les packages internes utilisent des versions semver compatibles pendant le développement ; Bun les lie localement quand elles correspondent aux versions du workspace, et npm reçoit des dépendances publiables.
+
+## Release npm
+
+Les versions sont maintenues ensemble avec Changesets :
+
+```bash
+bun run changeset
+bun run version-packages
+git add .
+git commit -m "chore: release packages"
+git tag v1.0.0
+git push origin main --tags
+```
+
+La CI publie les packages avec `NPM_TOKEN` dès qu'un tag `v*` est poussé. Le dépôt GitHub doit être configuré avec ce secret et le compte npm doit avoir accès à l'organisation `@baguettejs`.

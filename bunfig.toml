@@ -1,0 +1,3 @@
+# Bun is the canonical runtime and package manager for BaguetteJS.
+[install]
+exact = true

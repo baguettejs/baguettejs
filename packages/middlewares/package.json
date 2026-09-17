@@ -1,0 +1,36 @@
+{
+  "name": "@baguettejs/middlewares",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Utility functions for the BaguetteJS framework",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/**/*.js",
+    "dist/**/*.d.ts",
+    "dist/**/*.d.ts.map"
+  ],
+  "scripts": {
+    "build": "bun x tsc -b tsconfig.json",
+    "clean": "bun x tsc -b tsconfig.json --clean"
+  },
+  "dependencies": {
+    "@baguettejs/core": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.4.2",
+    "typescript": "^5.9.2"
+  },
+  "keywords": [
+    "utils",
+    "typescript",
+    "helpers",
+    "baguettejs",
+    "framework"
+  ],
+  "author": "Cyprien Tertrais",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  }
+}

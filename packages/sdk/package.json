@@ -1,0 +1,36 @@
+{
+  "name": "@baguettejs/sdk",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "TypeScript SDK generator for BaguetteJS APIs",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/**/*.js",
+    "dist/**/*.d.ts",
+    "dist/**/*.d.ts.map"
+  ],
+  "scripts": {
+    "generate": "bun generate.ts",
+    "build": "bun x tsc"
+  },
+  "dependencies": {
+    "@baguettejs/core": "^1.0.0",
+    "@baguettejs/utils": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.4.2",
+    "typescript": "^5.9.2"
+  },
+  "keywords": [
+    "typescript",
+    "sdk",
+    "codegen",
+    "baguettejs"
+  ],
+  "author": "Cyprien Tertrais",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "name": "baguettejs",
+  "private": true,
+  "type": "module",
+  "packageManager": "bun@1.4.2",
+  "description": "Minimal TypeScript backend framework",
+  "workspaces": [
+    "packages/*",
+    "examples/api"
+  ],
+  "scripts": {
+    "build": "bun x tsc -b",
+    "clean": "bun x tsc -b --clean",
+    "check": "bun x tsc -b --pretty false",
+    "changeset": "bun x changeset",
+    "version-packages": "bun x changeset version",
+    "release": "bun run build && bun x changeset publish"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.4.2",
+    "@changesets/cli": "^2.0.0",
+    "typescript": "^5.9.2"
+  }
+}

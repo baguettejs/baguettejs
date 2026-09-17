@@ -1,0 +1,14 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "rootDir": ".",
+    "outDir": "dist",
+    "composite": true,
+    "declaration": true
+  },
+  "references": [
+    { "path": "../../packages/core" },
+    { "path": "../../packages/middlewares" }
+  ],
+  "include": ["src/**/*.ts"]
+}

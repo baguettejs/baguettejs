@@ -1,0 +1,13 @@
+{
+  "name": "@baguettejs/example-api",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "bun --watch src/main.ts",
+    "start": "bun src/main.ts"
+  },
+  "dependencies": {
+    "@baguettejs/core": "workspace:*",
+    "@baguettejs/middlewares": "workspace:*"
+  }
+}
