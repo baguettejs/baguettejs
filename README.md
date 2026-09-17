@@ -28,8 +28,8 @@ bun run changeset
 bun run version-packages
 git add .
 git commit -m "chore: release packages"
-git tag v1.0.0
+git tag 1.0.0 # `v1.0.0` fonctionne aussi
 git push origin main --tags
 ```
 
-La CI publie les packages avec `NPM_TOKEN` dès qu'un tag `v*` est poussé. Le dépôt GitHub doit être configuré avec ce secret et le compte npm doit avoir accès à l'organisation `@baguettejs`.
+La CI publie les packages avec `NPM_TOKEN` dès qu'un tag `X.Y.Z` ou `vX.Y.Z` est poussé. Le tag doit correspondre à la version de tous les packages. Le dépôt GitHub doit être configuré avec ce secret et le compte npm doit avoir accès à l'organisation `@baguettejs`.

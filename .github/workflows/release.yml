@@ -2,7 +2,8 @@ name: Release packages
 
 on:
   push:
-    tags: ['v*']
+    # Accept both `1.0.0` and `v1.0.0` release tags.
+    tags: ['v*', '[0-9]*']
 
 permissions:
   contents: write
@@ -28,9 +29,18 @@ jobs:
         env:
           RELEASE_TAG: ${{ github.ref_name }}
         run: |
+          RELEASE_VERSION="${RELEASE_TAG#v}"
+          if [[ ! "${RELEASE_VERSION}" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "Invalid release tag '${RELEASE_TAG}'. Expected X.Y.Z or vX.Y.Z."
+            exit 1
+          fi
+
           for package in packages/*; do
             VERSION=$(bun -e "console.log((await Bun.file(process.argv[1]).json()).version)" "$package/package.json")
-            test "v${VERSION}" = "${RELEASE_TAG}"
+            if [[ "${VERSION}" != "${RELEASE_VERSION}" ]]; then
+              echo "${package} is version ${VERSION}, expected ${RELEASE_VERSION}."
+              exit 1
+            fi
           done
       - name: Publish changed packages
         env:
