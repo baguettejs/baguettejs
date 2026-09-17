@@ -4,6 +4,10 @@
   "type": "module",
   "packageManager": "bun@1.4.2",
   "description": "Minimal TypeScript backend framework",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/baguettejs/baguettejs"
+  },
   "workspaces": [
     "packages/*",
     "examples/api"

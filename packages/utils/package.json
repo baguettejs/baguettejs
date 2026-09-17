@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "type": "module",
   "description": "Utility functions for the BaguetteJS framework",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/baguettejs/baguettejs",
+    "directory": "packages/utils"
+  },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [

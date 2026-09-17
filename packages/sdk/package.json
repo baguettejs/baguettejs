@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "type": "module",
   "description": "TypeScript SDK generator for BaguetteJS APIs",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/baguettejs/baguettejs",
+    "directory": "packages/sdk"
+  },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
